@@ -1,0 +1,10 @@
+POST http://localhost:3000/addUser  
+Content-Type: application/json
+
+{
+"name": "rahul"
+}
+### get data
+GET http://localhost:3000/getData
+###
+

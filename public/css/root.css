@@ -1,0 +1,139 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Mono", monospace;
+}
+.heading{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #70428f;
+}
+.container{
+    height: 100vh ;
+    background: linear-gradient(180deg, #dc7bff 0%, #7c4b9c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subContainer{
+    /* display: flex; */
+    box-shadow: 0px 6px 15px 0px #423e3e;
+    background-color: antiquewhite;
+    padding: 2rem;
+    overflow: hidden;
+    border: 2px solid white;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 5; /* Ensure the overlay appears below the menu but above other content */
+    display: none;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.modal-container{
+    gap: 25px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: center;
+    border-radius: 8px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+}
+
+#error{
+    display: none;
+    margin-top: 18px;
+    color: red;
+}
+#username{
+    font-size: large;
+    border-radius: 15px;
+    background-color: #e2a7f7af;
+  
+    padding-right: 15px;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 30px;
+}
+#sub{
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #70428f;
+    transition: 0.3s;
+}
+#sub:hover{
+    padding: 11px;
+    font-size: large;
+    background-color: #965ebb;
+}
+#form{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+}
+
+
+
+
+.dot-flashing {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+  }
+  .dot-flashing::before, .dot-flashing::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  .dot-flashing::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  .dot-flashing::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+  
+  @keyframes dot-flashing {
+    0% {
+      background-color: #9880ff;
+    }
+    50%, 100% {
+      background-color: rgba(152, 128, 255, 0.2);
+    }
+  }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+    <div id="requestMenu" class="modal-overlay">
+        <div class="modal-container">
+            <h3 class="modal-heading">User wants to connect</h3>
+            <div class="answer">
+                <button class="result" id="yes">Yes</button>
+                <button class="result" id="no">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="subContainer">
+            <Button id="logoutButton" class="logout">Logout</Button>
+            <!-- <span class="heading">Home</span> -->
+            <form class="form">
+                <label for="name">Enter Username to connect</label>
+                <br><br>
+                <div class="formData">
+                    <input type="text" placeholder="username" name="name" id="whatName">
+                    <button id="sub">Search</button>
+                </div>
+                <span id="searchText" class="search">Searching...</span>
+            </form>
+            <ul id="userList">
+                <!-- <li> Rahul <Button>Connect</Button></li>                 -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/homeClient.js"></script>
+</body>
+</html>
+
+
+
+
+
+

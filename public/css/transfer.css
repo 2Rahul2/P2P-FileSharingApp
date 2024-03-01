@@ -1,0 +1,159 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Mono", monospace;
+}
+.container{
+    height: 100vh ;
+    background: linear-gradient(180deg, #dc7bff 0%, #7c4b9c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subContainer{
+    margin: 1.2rem;
+    /* display: flex; */
+    /* flex-direction: column; */
+    height: fit-content;
+    box-shadow: 0px 6px 15px 0px #423e3e;
+    background-color: antiquewhite;
+    padding: 2rem;
+    overflow: hidden;
+    border: 2px solid white;
+    border-radius: 15px;
+    z-index: 1;
+}
+.select{
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progressBar{
+ width: 8rem;
+ height: .5rem;
+ overflow: hidden;
+ border-radius: .4rem;
+ border: 1px solid black;
+ background-color: antiquewhite;
+}
+.progress{
+    /* width: 10%; */
+    height: 100%;
+    background-color: aqua;
+    transition: 0.3s;
+}
+.heading{
+    font-size: larger;
+}
+.fileList{
+    /* max-width: max-content; */
+    padding: 0;
+}
+.sentFile{
+    /* width: fit-content; */
+}
+.fileData{
+    gap: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+}
+.fileContent{
+    height: 250px;
+    overflow: auto;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 0.15rem solid #7c4b9c;
+    display: flex;
+}
+.file-heading{
+    /* overflow: hidden; */
+    overflow: hidden;
+    width: 10rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.listContainer{
+    /* margin: none; */
+    /* padding: 0; */
+    /* width: 3rem; */
+    /* max-width: min-content; */
+    list-style: none;
+}
+
+.modal-container{
+    border: 3px solid #70428f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 20px;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    background-color: antiquewhite;
+
+}
+.result{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 12px;
+    color: #1c1515;
+    border: 2px solid rgba(243, 142, 105, 0.836);
+    padding: 12px 20px 12px 20px;
+    /* background-color: #cc8ce4b9; */
+    background-color: rgba(243, 142, 105, 0.2);
+
+    transition: 0.3s;
+}
+.modal-heading{
+    color: #70428f;
+}
+.result:hover{
+    color: #f1e5e5;
+    background-color: rgba(255, 106, 52, 0.836);
+    
+}
+#recHead{
+    color: #7c4b9c;
+}
+#requestMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 5; /* Ensure the overlay appears below the menu but above other content */
+    display: none;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+#sendButton{
+    border: 1px solid salmon;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
+    /* border: none; */
+    outline: none;
+    cursor: pointer;
+    /* font-weight: bold; */
+    font-size: medium;
+    border-radius: 8px;
+    color: #1c1515;
+    padding: 10px 18px 10px 18px;
+    /* background-color: #cc8ce4b9; */
+    background-color: rgba(243, 142, 105, 0.836);
+    transition: 0.2s;
+}
+#sendButton:hover{
+    color: #f1e5e5;
+    background-color: rgba(255, 106, 52, 0.836);
+}

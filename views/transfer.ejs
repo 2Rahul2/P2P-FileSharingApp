@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/transfer.css">
+</head>
+<body>
+    <div id="requestMenu" class="modal-overlay">
+        <div class="modal-container">
+            <h3 id="errorHeading" class="modal-heading">User Left The Room</h3>
+            <div class="answer">
+                <button class="result" id="quitPage">Okay</button>
+                <!-- <button class="result" id="no">No</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="subContainer">
+            <h3 id="recHead">Waiting for user to send files</h3>
+            <div id="selectFiles" class="select">
+                <span class="heading">Select Files</span>
+                <input type="file" id="fileInput" multiple="multiple" />
+            </div>
+            <br>
+            <button id="sendButton">Send File</button>
+            <div class="fileContent">
+                <div id="SF" class="sentFile">
+                    <h3>Sent Files</h3>
+                    <ul id="Files-ListS" class="fileList">
+                        <!-- <li class="listContainer">
+                            <span class="file-heading">file name</span>
+                            <div class="progressBar">
+                                <div id="pro" class="progress"></div>
+                            </div>
+                        </li>
+                        <li class="listContainer">
+                            <span class="file-heading">file name</span>
+                            <div class="progressBar">
+                                <div id="pro" class="progress"></div>
+                            </div>
+                        </li>
+                        <li class="listContainer">
+                            <p class="file-heading">file name Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quis vitae ipsam corrupti laborum fugiat officia molestias temporibus velit ratione, quibusdam dolor nam nemo optio.</p>
+                            <div class="progressBar">
+                                <div id="pro" class="progress"></div>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+                <div id="RF" class="receivedFile">
+                    <h3>Received files</h3>
+                    <ul id="Files-ListR" class="fileList">
+                        <!-- <li class="listContainer">
+                            <span>file name</span>
+                            <div class="progressBar">
+                                <div id="pro" class="progress"></div>
+                            </div>
+                            <a href="">download</a>
+                            <div class="fileData">
+                            </div>
+                        </li>
+                        <li class="listContainer">
+                            <span>file name</span>
+                            <div class="fileData">
+                                <div class="progressBar">
+                                    <div id="pro" class="progress"></div>
+                                </div>
+                                <a href="">download</a>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="progressBar">
+                <div id="pro" class="progress"></div>
+            </div> -->
+
+        </div>
+    </div>
+<script>
+    // let progressBar = document.getElementById("pro")
+    // let sendButton = document.getElementById("sendButton")
+    // sendButton.addEventListener("click" ,(e)=>{
+    //     e.preventDefault()
+    //     progressBar.style.width = "80%"
+    // })
+</script>
+    <script src="../js/setP2PClient.js" type="module"></script>
+</body>
+</html>
