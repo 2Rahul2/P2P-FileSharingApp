@@ -10,7 +10,8 @@ let searchText = document.getElementById("searchText")
 searchText.innerText = ""
 const yesButton = document.getElementById("yes")
 const noButton = document.getElementById("no")
-const ws = new WebSocket(`ws://${window.location.hostname}:${window.location.port}/user-connect`);
+const websocketProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+const ws = new WebSocket(`${websocketProtocol}//${window.location.hostname}:${window.location.port}/user-connect`);
 ws.onopen = function(){
     const userId = localStorage.getItem('userId')
     sendMessage({
