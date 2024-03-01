@@ -18,7 +18,8 @@ let errorHeading = document.getElementById("errorHeading")
 let quitPage = document.getElementById("quitPage")
 let fileListS = document.getElementById("Files-ListS")
 let fileListR = document.getElementById("Files-ListR")
-const ws = new WebSocket("ws://localhost:3000");
+const websocketProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+const ws = new WebSocket(`${websocketProtocol}//${window.location.hostname}:${window.location.port}`);
 quitPage.addEventListener("click" ,(e)=>{
     e.preventDefault()
     window.location.href = '/home'
