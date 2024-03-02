@@ -38,6 +38,7 @@ submitButton.addEventListener('click' ,(e)=>{
             window.location.href = "/home"
 
         }else if(data.type ==="failed"){
+            creatingUserText.innerText = "User Already Exsits"
             console.log("User Exists")
         }else{
             console.log("Error creating user")
