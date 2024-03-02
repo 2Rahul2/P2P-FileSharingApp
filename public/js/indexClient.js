@@ -2,14 +2,15 @@ console.log("heheh")
 // let nameTag = document.getElementById('name')
 // nameTag.innerText = "My Name"
 const localName = localStorage.getItem('userName')
-
 if (localName != null){
     window.location = "/home/"
 }
 // nameTag.innerText='Name ' + localStorage.getItem('userName')
 
+let creatingUserText = document.getElementById("creating")
 let submitButton = document.getElementById('sub')
 submitButton.addEventListener('click' ,(e)=>{
+    creatingUserText.innerText = "Creating..."
     e.preventDefault()
     console.log("sending")
     let username = document.getElementById('username').value
@@ -32,8 +33,10 @@ submitButton.addEventListener('click' ,(e)=>{
             localStorage.setItem("userId",data.userId+data.userName)
             localStorage.setItem('userName',data.userName)
             // nameTag.innerText = data.userName
-            window.location.href = "/home"
             console.log("Name in Local Storage" ,localStorage.getItem("userName"))
+            creatingUserText.innerText = "User Created"
+            window.location.href = "/home"
+
         }else if(data.type ==="failed"){
             console.log("User Exists")
         }else{

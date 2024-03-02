@@ -13,6 +13,10 @@ let checkUserTime
 
 let sendButton = document.getElementById("sendButton")
 let selectFiles = document.getElementById("selectFiles")
+let recHead = document.getElementById("recHead")
+recHead.innerText = "Connecting to user"
+selectFiles.style.display = "none"
+sendButton.style.display = "none"
 let errorMenu = document.getElementById("requestMenu")
 let errorHeading = document.getElementById("errorHeading")
 let quitPage = document.getElementById("quitPage")
@@ -29,8 +33,7 @@ function removeLocalStorageData(){
     localStorage.removeItem("senderName")
 }
 if (ConnectionStatus === "sender"){
-    let recHead = document.getElementById("recHead")
-    recHead.remove()
+    
     window.addEventListener("beforeunload" ,function(event){
         sendMessage({
             type:"close",
@@ -48,7 +51,12 @@ if (ConnectionStatus === "sender"){
     const lc = new RTCPeerConnection(configuration)
     const dc = lc.createDataChannel("channel" ,{ordered:true})
     dc.onmessage = e=>console.log('msg '+e.data);
-    dc.onopen = e=> console.log("connection opened");
+    dc.onopen = e=> {
+        recHead.remove()
+        selectFiles.style.display = "block"
+        sendButton.style.display = "block"
+        console.log("connection opened")
+    };
     dc.onerror = e => {
         sendMessage({
             type:"close",
@@ -90,7 +98,7 @@ if (ConnectionStatus === "sender"){
     }
     ws.onmessage = async function(event){
         const eventData = JSON.parse(event.data)
-        console.log(eventData)
+        // console.log(eventData)
         const type = eventData.type
         if(type === "availableResponse"){
             console.log("Other User Available")
@@ -108,7 +116,7 @@ if (ConnectionStatus === "sender"){
             }
         }else if(type ==="answer"){
             const answer = eventData.data
-            console.log("got answer :" ,answer)
+            console.log("got answer :")
             if(once){
                 await lc.setRemoteDescription(answer).then(() => {
                     console.log("Remote description set successfully.");
@@ -127,7 +135,7 @@ if (ConnectionStatus === "sender"){
             }     
         }else if(type==="ice"){
             const candidate = eventData.data
-            console.log("Got ice data : " ,candidate)
+            console.log("Got ice data : ")
             lc.addIceCandidate(candidate)
             .then(() => {
                 console.log("ICE candidate added successfully");
@@ -152,7 +160,7 @@ if (ConnectionStatus === "sender"){
         // send the offer to the other user
         const icedata = null
         if(icedata){
-            console.log("sending ice data : " ,icedata)
+            console.log("sending ice data : ")
             sendMessage({
                 type:'ice',
                 data:icedata,
@@ -162,7 +170,7 @@ if (ConnectionStatus === "sender"){
         }
         if(offerSent){
             const offer = lc.localDescription
-            console.log("sending offer : " ,offer)
+            console.log("sending offer : ")
             sendMessage({
                 type:"offer",
                 data:offer,
@@ -233,7 +241,7 @@ if (ConnectionStatus === "sender"){
                     dc.send(chunk);
                     offset += CHUNK_SIZE;
                     if(progress_bar){
-                        console.log(progress_bar)
+                        // console.log(progress_bar)
                         progress_bar.style.width = `${(offset / totalLength) * 100}%`;
                     }else{
                         console.log(progress_bar ,"is null " ,`proS${index}`)
@@ -305,7 +313,7 @@ if (ConnectionStatus === "sender"){
                 result:"YES"
             })
         }else if(type ==="offer"){
-            console.log("Got offer : " ,eventData.data)
+            console.log("Got offer : ")
             // set offer in remote desc which got from other user
             await rc.setRemoteDescription(eventData.data).then(a=>{
                 console.log("Has Set Remote Description")
@@ -318,7 +326,7 @@ if (ConnectionStatus === "sender"){
             })
         }else if(type==="ice"){
             const candidate = eventData.data
-            console.log("Got ice data : " ,candidate)
+            console.log("Got ice data : ")
             rc.addIceCandidate(candidate)
             .then(() => {
                 console.log("ICE candidate added successfully");
@@ -338,7 +346,7 @@ if (ConnectionStatus === "sender"){
     rc.onicecandidate = e =>{
         const icedata = null
         if(icedata){
-            console.log("sending ice : " ,icedata)
+            console.log("sending ice : ")
             sendMessage({
                 type:'ice',
                 data:icedata,
@@ -347,7 +355,7 @@ if (ConnectionStatus === "sender"){
         }
         if(offerSent){
             const offer = rc.localDescription
-            console.log("sending answer " ,offer)
+            console.log("sending answer ")
             sendMessage({
                 type:'answer',
                 data:offer,
@@ -394,9 +402,9 @@ if (ConnectionStatus === "sender"){
         } else if (data instanceof ArrayBuffer) {
             // Handle ArrayBuffer as file chunk
             receivedChunks.push(data);
-            console.log(receivedChunks.length , "~~~~" ,totalChunks)
+            // console.log(receivedChunks.length , "~~~~" ,totalChunks)
             received_progress_bar.style.width = `${(receivedChunks.length/totalChunks)*100}%`
-            console.log(received_progress_bar ,`pro${receivedIndex}~~${(receivedChunks.length/totalChunks)*100}`)
+            // console.log(received_progress_bar ,`pro${receivedIndex}~~${(receivedChunks.length/totalChunks)*100}`)
             // Check if all chunks have been received
             if (receivedChunks.length === totalChunks) {
                 const fileData = new Blob(receivedChunks);
@@ -430,7 +438,10 @@ if (ConnectionStatus === "sender"){
         errorHeading.innerText = "Connection Timed out"
         errorMenu.style.display = "flex"
     }
-    rc.dc.onopen = e=>console.log("channel opened!")}
+    rc.dc.onopen = e=>{
+        recHead.innerText = "Waiting for user to send files"
+        console.log("channel opened!")
+    }}
 
     // document.getElementById('check').addEventListener('click',(e)=>{
     //     e.preventDefault()
