@@ -53,6 +53,11 @@ body{
 .heading{
     margin-bottom: 20px;
 }
+#current-user{
+    color: #70428f;
+    font-size: large;
+    font-weight: bold;    
+}
 #requestMenu {
     position: fixed;
     top: 0;

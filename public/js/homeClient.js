@@ -5,6 +5,8 @@ let myuserId = localStorage.getItem("userId")
 if(myuserId===null){
     window.location.href = "/"
 }
+let userParaTag = document.getElementById("current-user")
+userParaTag.innerText = `Hello ${myuserName}`
 let logoutButton = document.getElementById("logoutButton")
 let searchText = document.getElementById("searchText")
 searchText.innerText = ""
