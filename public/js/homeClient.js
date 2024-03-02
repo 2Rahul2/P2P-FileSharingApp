@@ -153,12 +153,15 @@ subButton.addEventListener('click' ,(event)=>{
         }
         return response.json();   
     }).then(data=>{
-        data.forEach(element => {
-            userListMenu.innerHTML += `<li> ${element.userName} <button onclick="getId('${element.userId+element.userName}' ,'${element.userName}')" id="${element.userId}">Connect</button></li>`
-            searchText.innerText = ""
-
-        });
         console.log(data)
+        if(data.Length === 0){
+            searchText.innerText = "No user found"
+        }else{
+            searchText.innerText = ""
+            data.forEach(element => {
+                userListMenu.innerHTML += `<li> ${element.userName} <button onclick="getId('${element.userId+element.userName}' ,'${element.userName}')" id="${element.userId}">Connect</button></li>`
+            });
+        }
     }).catch(err=>{
         searchText.style.color = "red"
         searchText.innerText = "Error getting user"
