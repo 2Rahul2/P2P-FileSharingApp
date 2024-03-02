@@ -155,6 +155,7 @@ subButton.addEventListener('click' ,(event)=>{
     }).then(data=>{
         console.log(data)
         if(data.Length === 0){
+            console.log("no user found")
             searchText.innerText = "No user found"
         }else{
             searchText.innerText = ""

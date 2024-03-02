@@ -41,6 +41,7 @@ submitButton.addEventListener('click' ,(e)=>{
             creatingUserText.innerText = "User Already Exsits"
             console.log("User Exists")
         }else{
+            creatingUserText.innerText = "Error Creating User"
             console.log("Error creating user")
         }
     }).catch(err=>console.log(err))
