@@ -122,9 +122,14 @@ if (ConnectionStatus === "sender"){
                     console.log("Remote description set successfully.");
                     // Check the state of the data channel
                     if (lc.dataChannel && lc.dataChannel.readyState === "open") {
-                      console.log("Data channel is open.");
+                        console.log("Data channel is open.");
                     } else {
-                      console.log("Data channel is not open or not yet created.");
+                        recHead.innerText = "Could not connect to User"
+                        sendMessage({
+                            type:"error",
+                            toId:seconduserId
+                        })
+                        console.log("Data channel is not open or not yet created.");
                     }
                   })
                   .catch(error => {
@@ -341,6 +346,8 @@ if (ConnectionStatus === "sender"){
             errorHeading.innerText = "User left the room"
             errorMenu.style.display = "flex"
             // window.location = '/home'
+        }else if(type==="error"){
+            recHead.innerText = "Could not connect to User"
         }
     }
     rc.onicecandidate = e =>{

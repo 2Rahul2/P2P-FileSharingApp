@@ -178,6 +178,13 @@ app.ws('/', function connection(ws , req){
             }
             // removeClient(ws);
 
+        }else if(data.type === "error"){
+            const client = connections.get(data.toId)
+            if(client){
+                client.send(JSON.stringify({
+                    type:"error"
+                }))
+            }
         }
 
         // }else if(data.type === 'message'){
