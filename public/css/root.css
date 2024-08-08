@@ -12,7 +12,8 @@ body{
 }
 .container{
     height: 100vh ;
-    background: linear-gradient(180deg, #dc7bff 0%, #7c4b9c 100%);
+    background: linear-gradient(180deg, #e396ffc9 0%, #8873fea7 100%);
+
     display: flex;
     align-items: center;
     justify-content: center;

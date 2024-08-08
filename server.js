@@ -37,7 +37,7 @@ function generateId() {
 
 //     return userDoc.exists()
 // }
-siteRoute = require('./controllers/siteController')
+siteRoute = require('./controllers/siteController.js')
 
 app.use('/' ,siteRoute)
 
